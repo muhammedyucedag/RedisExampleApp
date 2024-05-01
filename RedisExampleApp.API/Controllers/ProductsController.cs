@@ -1,40 +1,35 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RedisExampleApp.API.Models;
-using RedisExampleApp.API.Repositories.Interfaces;
-using StackExchange.Redis;
+using RedisExampleApp.API.Services;
 
-namespace RedisExampleApp.API.Controllers
+namespace RedisExampleApp.API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ProductsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    private readonly IProductService _productService;
+
+    public ProductsController(IProductService productService)
     {
-        private readonly IProductRepository _productRepository;
-        private readonly IDatabase _database;
-        public ProductsController(IProductRepository productRepository, IDatabase database)
-        {
-            _productRepository = productRepository;
-            _database = database;
+        _productService = productService;
+    }
 
-            _database.StringSet("soyad", "yücedağ");
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        return Ok(await _productService.GetAsync());
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            return Ok(await _productRepository.GetAsync());
-        }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        return Ok(await _productService.GetByIdAsync(id));
+    }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
-        {
-            return Ok(await _productRepository.GetByIdAsync(id));
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(Product product)
-        {
-            return Created(string.Empty, await _productRepository.CreateAsync(product));
-        }
+    [HttpPost]
+    public async Task<IActionResult> Create(Product product)
+    {
+        return Created(string.Empty, await _productService.CreateAsync(product));
     }
 }

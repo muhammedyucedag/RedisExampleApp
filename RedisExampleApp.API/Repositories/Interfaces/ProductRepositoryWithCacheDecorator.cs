@@ -79,13 +79,17 @@ public class ProductRepositoryWithCacheDecorator : IProductRepository
 
     private async Task<List<Product>> loadToCacheFromDbAsync()
     {
+        // Veritabanından tüm ürünleri alır, asenkron olarak çalışır
         var products = await _repository.GetAsync();
 
+        // Her ürün için önbelleğe eklenir
         products.ForEach(p =>
         {
+            // Ürünün anahtarı 'Id' değeridir, ve ürün JSON formatına dönüştürülerek önbelleğe eklenir
             _cacheRepository.HashSetAsync(productKey, p.Id.ToString(), JsonSerializer.Serialize(p));
         });
 
+        // Veritabanından alınan ürün listesini döndürür
         return products;
     }
 }
