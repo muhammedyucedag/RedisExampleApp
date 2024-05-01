@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisExampleApp.API", "RedisExampleApp.API\RedisExampleApp.API.csproj", "{590A6E1A-4FCD-412F-8933-430270B9B6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisExampleApp.API", "RedisExampleApp.API\RedisExampleApp.API.csproj", "{590A6E1A-4FCD-412F-8933-430270B9B6AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisExampleApp.Cache", "RedisExampleApp.Cache\RedisExampleApp.Cache.csproj", "{0A6DB39A-0C31-4C93-85D1-7B485C14EB4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{590A6E1A-4FCD-412F-8933-430270B9B6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590A6E1A-4FCD-412F-8933-430270B9B6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590A6E1A-4FCD-412F-8933-430270B9B6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6DB39A-0C31-4C93-85D1-7B485C14EB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6DB39A-0C31-4C93-85D1-7B485C14EB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6DB39A-0C31-4C93-85D1-7B485C14EB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6DB39A-0C31-4C93-85D1-7B485C14EB4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
