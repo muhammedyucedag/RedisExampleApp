@@ -27,7 +27,8 @@ namespace RedisExampleApp.API.Repositories.Interfaces
             return await _context.Products.ToListAsync();
         }
 
-        public async Task<Product> GetByIdAsync(int Id)
+
+        public async Task<Product> GetByIdAsync(Guid Id)
         {
             return await _context.Products.FindAsync(Id);
         }

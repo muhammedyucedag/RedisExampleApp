@@ -10,25 +10,27 @@ namespace RedisExampleApp.API.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var Id = Guid.NewGuid();
-
             modelBuilder.Entity<Product>()
                 .HasData(
                 new Product()
                 {
-                    Id = Id,
+                    Id = Guid.NewGuid(),
+                    Price = 12,
                     Name = "Kalem 1"
                 },
                 new Product()
                 {
-                    Id = Id,
+                    Id = Guid.NewGuid(),
+                    Price = 14,
                     Name = "Kalem 2"
                 }, 
                 new Product()
                 {
-                    Id = Id,
+                    Id = Guid.NewGuid(),
+                    Price = 15,
                     Name = "Kalem 2"
                 });
+
             base.OnModelCreating(modelBuilder);
         }
     }
